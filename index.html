@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booster liquidations</title>
+</head>
+<body>
+    <h1>Booster liquidations</h1>
+    <button id="connectWallet">Connect Wallet</button>
+
+    <!-- Error message display -->
+    <div id="errorMessage" style="color:red; margin-top:20px;"></div>
+
+    <!-- Liquidation Form -->
+    <div id="liquidationForm" style="display: none;">
+        <h2>Liquidation Form</h2>
+
+        Borrowed to repay:
+        <select id="borrowedDropdown">
+            <!-- Options will be populated dynamically -->
+        </select>
+        Value to repay
+        <input type="number" id="borrowedValue" placeholder="Enter value to repay" />
+
+        Collateral to get:
+        <select id="collateralDropdown">
+            <!-- Options will be populated dynamically -->
+        </select>
+
+        <button id="liquidateButton">Initiate Liquidation</button>
+        <div id="liquidationError" style="color: red;"></div>
+
+        <br><br>
+        <pre>
+        * Currently liquidations work in manual mode
+        - in the first dropdown select position which you want to liquidate
+        - in the input field enter value which you have and you want to spend for liquidation
+            - initially the repayment value is set according to the borrower's position, decrease the repayment value manually until the error disappears.
+            - currently, we didn't check that you have this amount
+            - for liquidations of non-ether we will ask to approve tokens for liquidations first
+        - in the second dropdown select collateral which you want to receive
+            - borrower should have enough of this collateral, we didn't check it automatically (now we show all entered markets of borrower)
+        </pre>
+
+    </div>
+
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+    <script src="abi.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
